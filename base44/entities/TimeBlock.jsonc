@@ -1,0 +1,121 @@
+{
+  "name": "TimeBlock",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Block title"
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Block start"
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Block end (for multi-day events)"
+    },
+    "duration_minutes": {
+      "type": "integer",
+      "description": "Duration in minutes"
+    },
+    "strength": {
+      "type": "string",
+      "enum": [
+        "light",
+        "medium",
+        "hard"
+      ],
+      "default": "medium",
+      "description": "Commitment level"
+    },
+    "task_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Associated tasks"
+    },
+    "block_type": {
+      "type": "string",
+      "enum": [
+        "focus",
+        "admin",
+        "break",
+        "meeting",
+        "flex"
+      ],
+      "default": "focus"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "recurrence_rule": {
+      "type": "object",
+      "properties": {
+        "frequency": {
+          "type": "string",
+          "enum": [
+            "none",
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "none"
+        },
+        "interval": {
+          "type": "integer",
+          "default": 1,
+          "description": "Repeat every N days/weeks/months"
+        },
+        "days_of_week": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "0=Sunday, 6=Saturday"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date",
+          "description": "When recurrence stops"
+        },
+        "occurrences": {
+          "type": "integer",
+          "description": "Number of occurrences"
+        }
+      }
+    },
+    "recurrence_parent_id": {
+      "type": "string",
+      "description": "ID of the parent recurring block"
+    },
+    "is_all_day": {
+      "type": "boolean",
+      "default": false,
+      "description": "All-day event flag"
+    }
+  },
+  "required": [
+    "title",
+    "start_time"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

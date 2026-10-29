@@ -1,0 +1,59 @@
+{
+  "name": "CoachingInsight",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "pattern",
+        "win",
+        "blocker_trend",
+        "suggestion"
+      ],
+      "description": "Type of insight"
+    },
+    "content": {
+      "type": "string",
+      "description": "The insight text"
+    },
+    "confidence_score": {
+      "type": "number",
+      "description": "0-1 score of how confident the AI is"
+    },
+    "related_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_archived": {
+      "type": "boolean",
+      "default": false
+    },
+    "source_session_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of sessions that contributed to this insight"
+    }
+  },
+  "required": [
+    "type",
+    "content"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

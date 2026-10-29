@@ -1,0 +1,76 @@
+{
+  "name": "TimeEntry",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "description": "Associated task"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session start"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session end"
+    },
+    "duration_minutes": {
+      "type": "integer",
+      "description": "Total duration"
+    },
+    "entry_type": {
+      "type": "string",
+      "enum": [
+        "pomodoro",
+        "stopwatch",
+        "manual"
+      ],
+      "default": "manual"
+    },
+    "block_strength": {
+      "type": "string",
+      "enum": [
+        "light",
+        "medium",
+        "hard"
+      ],
+      "description": "Commitment level"
+    },
+    "session_note": {
+      "type": "string",
+      "description": "What happened during session"
+    },
+    "interruptions": {
+      "type": "integer",
+      "default": 0
+    },
+    "energy_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  },
+  "required": [
+    "task_id",
+    "started_at"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

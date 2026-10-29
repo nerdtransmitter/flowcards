@@ -1,0 +1,75 @@
+{
+  "name": "Project",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description"
+    },
+    "area": {
+      "type": "string",
+      "enum": [
+        "apartment",
+        "admin",
+        "health",
+        "career",
+        "learning",
+        "creative",
+        "social",
+        "misc"
+      ],
+      "default": "misc"
+    },
+    "north_star": {
+      "type": "string",
+      "description": "Short guiding sentence"
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Desired outcomes"
+    },
+    "color": {
+      "type": "string",
+      "default": "#4ECDC4",
+      "description": "Project color"
+    },
+    "emoji": {
+      "type": "string",
+      "description": "Project emoji"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "on_hold",
+        "completed",
+        "archived"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

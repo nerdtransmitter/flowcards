@@ -1,0 +1,66 @@
+{
+  "name": "CoachingSession",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "onboarding",
+        "morning_checkin",
+        "evening_review",
+        "stuck_support",
+        "weekly_plan"
+      ],
+      "description": "Type of coaching session"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mood_rating": {
+      "type": "integer",
+      "description": "1-5 mood rating"
+    },
+    "energy_rating": {
+      "type": "integer",
+      "description": "1-5 energy rating"
+    },
+    "responses": {
+      "type": "object",
+      "description": "JSON object storing Q&A pairs for the session"
+    },
+    "outcome_task_id": {
+      "type": "string",
+      "description": "ID of a task created or selected during the session"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags derived from the session (e.g., 'low-energy', 'anxious')"
+    }
+  },
+  "required": [
+    "type",
+    "started_at"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

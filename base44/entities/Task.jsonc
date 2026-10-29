@@ -1,0 +1,225 @@
+{
+  "name": "Task",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Task title"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Markdown notes and details"
+    },
+    "why": {
+      "type": "string",
+      "description": "One-line purpose - why this matters"
+    },
+    "next_step": {
+      "type": "string",
+      "description": "Suggested next step (\u2264120 chars)"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Associated project ID"
+    },
+    "parent_task_id": {
+      "type": "string",
+      "description": "Parent task ID if this is a subtask"
+    },
+    "subtask_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Child subtask IDs"
+    },
+    "deadline_type": {
+      "type": "string",
+      "enum": [
+        "none",
+        "soft",
+        "hard"
+      ],
+      "default": "none",
+      "description": "Deadline flexibility"
+    },
+    "aim_by": {
+      "type": "string",
+      "format": "date",
+      "description": "Optional target date"
+    },
+    "effort": {
+      "type": "string",
+      "enum": [
+        "tiny",
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "small",
+      "description": "Estimated effort"
+    },
+    "energy": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "description": "Energy level required"
+    },
+    "context_tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "home",
+          "errands",
+          "laptop",
+          "phone",
+          "quiet",
+          "15min",
+          "30min",
+          "60min",
+          "deep_work"
+        ]
+      },
+      "description": "Context tags for filtering"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "inbox",
+        "quick",
+        "import",
+        "voice",
+        "chat",
+        "ai"
+      ],
+      "default": "inbox"
+    },
+    "surfaced_count": {
+      "type": "integer",
+      "default": 0,
+      "description": "Times shown in Focus Now"
+    },
+    "snoozed_until": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Snoozed until this datetime"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related URLs"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "File URLs"
+    },
+    "blocked_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Task IDs blocking this one"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "waiting",
+        "someday",
+        "done",
+        "archived"
+      ],
+      "default": "active"
+    },
+    "is_pinned": {
+      "type": "boolean",
+      "default": false,
+      "description": "Prevent auto-decay"
+    },
+    "is_important": {
+      "type": "boolean",
+      "default": false,
+      "description": "High priority"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "uncompleted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last restored from completed"
+    },
+    "emoji": {
+      "type": "string",
+      "description": "Optional emoji icon"
+    },
+    "ai_rationale": {
+      "type": "string",
+      "description": "Why AI surfaced this task"
+    },
+    "custom_order": {
+      "type": "integer",
+      "description": "User-defined order in Do Next"
+    },
+    "location_label": {
+      "type": "string",
+      "description": "User-friendly location name (e.g. 'Gym', 'Home')"
+    },
+    "address_input": {
+      "type": "string",
+      "description": "Raw address text input"
+    },
+    "place_id": {
+      "type": "string",
+      "description": "Google Places ID"
+    },
+    "lat": {
+      "type": "number",
+      "description": "Latitude"
+    },
+    "lng": {
+      "type": "number",
+      "description": "Longitude"
+    },
+    "geocode_status": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "pending",
+        "success",
+        "failed"
+      ],
+      "default": "idle"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

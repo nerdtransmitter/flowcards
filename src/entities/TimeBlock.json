@@ -1,0 +1,55 @@
+{
+  "name": "TimeBlock",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Block title"
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Block start"
+    },
+    "duration_minutes": {
+      "type": "integer",
+      "description": "Duration in minutes"
+    },
+    "strength": {
+      "type": "string",
+      "enum": [
+        "light",
+        "medium",
+        "hard"
+      ],
+      "default": "medium",
+      "description": "Commitment level"
+    },
+    "task_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Associated tasks"
+    },
+    "block_type": {
+      "type": "string",
+      "enum": [
+        "focus",
+        "admin",
+        "break",
+        "meeting",
+        "flex"
+      ],
+      "default": "focus"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "start_time",
+    "duration_minutes"
+  ]
+}

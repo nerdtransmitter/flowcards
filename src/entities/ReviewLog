@@ -1,0 +1,62 @@
+{
+  "name": "ReviewLog",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly"
+      ],
+      "description": "Review type"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Review notes"
+    },
+    "decisions": {
+      "type": "object",
+      "description": "Decisions made during review"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "insights": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key insights"
+    },
+    "tasks_reviewed": {
+      "type": "integer",
+      "default": 0
+    },
+    "tasks_completed": {
+      "type": "integer",
+      "default": 0
+    }
+  },
+  "required": [
+    "type"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

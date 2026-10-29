@@ -1,0 +1,118 @@
+{
+  "type": "object",
+  "properties": {
+    "timezone": {
+      "type": "string",
+      "default": "Europe/Paris"
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "light",
+        "dark"
+      ],
+      "default": "light"
+    },
+    "color_palette": {
+      "type": "string",
+      "default": "coral",
+      "enum": [
+        "coral",
+        "ocean",
+        "lavender",
+        "mint",
+        "sunset",
+        "forest"
+      ]
+    },
+    "max_surfaced": {
+      "type": "integer",
+      "default": 3,
+      "description": "Max tasks in Focus Now"
+    },
+    "show_emoji": {
+      "type": "boolean",
+      "default": true
+    },
+    "show_context_chips": {
+      "type": "boolean",
+      "default": true
+    },
+    "notification_sms": {
+      "type": "boolean",
+      "default": false
+    },
+    "notification_push": {
+      "type": "boolean",
+      "default": true
+    },
+    "current_energy": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    },
+    "current_location": {
+      "type": "string",
+      "enum": [
+        "home",
+        "office",
+        "errands",
+        "other"
+      ],
+      "default": "home"
+    },
+    "last_daily_review": {
+      "type": "string",
+      "format": "date"
+    },
+    "last_weekly_review": {
+      "type": "string",
+      "format": "date"
+    },
+    "pomodoro_work_minutes": {
+      "type": "integer",
+      "default": 25
+    },
+    "pomodoro_break_minutes": {
+      "type": "integer",
+      "default": 5
+    },
+    "default_calendar_view": {
+      "type": "string",
+      "enum": [
+        "day",
+        "3day",
+        "week",
+        "month"
+      ],
+      "default": "week"
+    },
+    "shelf_view_mode": {
+      "type": "string",
+      "enum": [
+        "cards",
+        "compact",
+        "kanban"
+      ],
+      "default": "cards"
+    },
+    "reflection_day": {
+      "type": "string",
+      "enum": [
+        "sunday",
+        "monday",
+        "saturday"
+      ],
+      "default": "sunday"
+    }
+  },
+  "name": "User",
+  "required": [
+    "last_daily_review",
+    "last_weekly_review"
+  ]
+}
